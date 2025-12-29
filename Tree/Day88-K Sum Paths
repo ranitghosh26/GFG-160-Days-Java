@@ -1,0 +1,38 @@
+class Solution {
+    private int count = 0;
+    
+    public int countAllPaths(Node root, int k) {
+        if (root == null) return 0;
+        Map<Long, Integer> prefixMap = new HashMap<>();
+        dfs(root, 0L, k, prefixMap);
+        return count;
+    }     
+
+    
+    private void dfs(Node node, long currentSum, int k, Map<Long, Integer> prefixMap) {
+        if (node == null) return;
+        
+        currentSum += node.data;
+        
+        // Count single node paths
+        if (node.data == k) {
+            count++;
+        }
+        
+        // Count paths ending at this node (from some ancestor to this node)
+        count += prefixMap.getOrDefault(currentSum - k, 0);
+        
+        // Add current sum to map
+        prefixMap.put(currentSum, prefixMap.getOrDefault(currentSum, 0) + 1);
+        
+        // Recurse to children
+        dfs(node.left, currentSum, k, prefixMap);
+        dfs(node.right, currentSum, k, prefixMap);
+        
+        // Backtrack: remove current sum from map
+        prefixMap.put(currentSum, prefixMap.get(currentSum) - 1);
+        if (prefixMap.get(currentSum) == 0) {
+            prefixMap.remove(currentSum);
+        }
+    }
+}
