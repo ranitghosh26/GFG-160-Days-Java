@@ -1,0 +1,32 @@
+
+class Solution {
+    public ArrayList<ArrayList<Integer>> kClosest(int[][] points, int k) {
+     
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> {
+            long distA = (long) a[0] * a[0] + (long) a[1] * a[1];
+            long distB = (long) b[0] * b[0] + (long) b[1] * b[1];
+           
+            return Long.compare(distB, distA);
+        });
+
+        for (int[] point : points) {
+            maxHeap.add(point);
+            
+            if (maxHeap.size() > k) {
+                maxHeap.poll();
+            }
+        }
+
+        // Convert the remaining k points in the heap to the required ArrayList format
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        while (!maxHeap.isEmpty()) {
+            int[] point = maxHeap.poll();
+            ArrayList<Integer> pointList = new ArrayList<>();
+            pointList.add(point[0]);
+            pointList.add(point[1]);
+            result.add(pointList);
+        }
+
+        return result;
+    }
+}
