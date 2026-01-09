@@ -1,0 +1,48 @@
+class Solution {
+    static String decodeString(String s) {
+        // Stacks to manage the nested structure
+        Stack<Integer> countStack = new Stack<>();
+        Stack<StringBuilder> stringStack = new Stack<>();
+        
+        StringBuilder currentString = new StringBuilder();
+        int k = 0;
+        
+        for (char ch : s.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                // Build the number k (handles multi-digit numbers like 12[a])
+                k = k * 10 + (ch - '0');
+            } 
+            else if (ch == '[') {
+                // Push the calculated number and current string context to stacks
+                countStack.push(k);
+                stringStack.push(currentString);
+                
+                // Reset for the inner substring
+                currentString = new StringBuilder();
+                k = 0;
+            } 
+            else if (ch == ']') {
+                // We finished an inner sequence
+                // 1. Pop the repetition count
+                int repeatCount = countStack.pop();
+                
+                // 2. Pop the string that existed BEFORE this bracket
+                StringBuilder decodedString = stringStack.pop();
+                
+                // 3. Append the currentString 'repeatCount' times
+                for (int i = 0; i < repeatCount; i++) {
+                    decodedString.append(currentString);
+                }
+                
+                // 4. Update currentString to be this newly combined string
+                currentString = decodedString;
+            } 
+            else {
+                // Regular character, just append to current string
+                currentString.append(ch);
+            }
+        }
+        
+        return currentString.toString();
+    }
+}
