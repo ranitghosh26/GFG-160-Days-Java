@@ -1,0 +1,79 @@
+class Solution {
+    private int[] disc, low, parent;
+    private boolean[] visited, ap;
+    private int timer;
+    private List<List<Integer>> adj;
+    
+    static ArrayList<Integer> articulationPoints(int V, int[][] edges) {
+        Solution sol = new Solution();
+        return sol.findArticulationPoints(V, edges);
+    }
+    
+    private ArrayList<Integer> findArticulationPoints(int V, int[][] edges) {
+        // Build adjacency list
+        adj = new ArrayList<>();
+        for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
+        
+        for (int[] edge : edges) {
+            adj.get(edge[0]).add(edge[1]);
+            adj.get(edge[1]).add(edge[0]);
+        }
+        
+        disc = new int[V];
+        low = new int[V];
+        parent = new int[V];
+        visited = new boolean[V];
+        ap = new boolean[V];
+        timer = 0;
+        
+        Arrays.fill(parent, -1);
+        
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                dfs(i);
+            }
+        }
+        
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < V; i++) {
+            if (ap[i]) result.add(i);
+        }
+        
+        if (result.isEmpty()) result.add(-1);
+        
+        Collections.sort(result);
+        return result;
+    }
+    
+    private void dfs(int u) {
+        visited[u] = true;
+        disc[u] = low[u] = timer++;
+        int childCount = 0;
+        
+        for (int v : adj.get(u)) {
+            if (!visited[v]) {
+                childCount++;
+                parent[v] = u;
+                dfs(v);
+                
+                // Update low value of u
+                low[u] = Math.min(low[u], low[v]);
+                
+                // u is an AP if:
+                // 1. u is root of DFS tree and has two or more children
+                if (parent[u] == -1 && childCount > 1) {
+                    ap[u] = true;
+                }
+                // 2. u is not root and low[v] >= disc[u]
+                if (parent[u] != -1 && low[v] >= disc[u]) {
+                    ap[u] = true;
+                }
+            } 
+            // Update low[u] for back edge (skip parent to avoid treating
+            // undirected edge as back edge)
+            else if (v != parent[u]) {
+                low[u] = Math.min(low[u], disc[v]);
+            }
+        }
+    }
+}
