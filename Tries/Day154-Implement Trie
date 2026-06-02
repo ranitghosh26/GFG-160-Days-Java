@@ -1,1 +1,69 @@
-Implement Trie
+// User function Template for Java
+class Trie {
+
+    private class TrieNode {
+        TrieNode[] children;
+        boolean isEndOfWord;
+
+        public TrieNode() {
+            children = new TrieNode[26];
+            isEndOfWord = false;
+        }
+    }
+
+    private final TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
+    }
+       // 1. Insert a word into the Trie
+    public void insert(String word) {
+        TrieNode current = root;
+        
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            int index = ch - 'a'; 
+
+            if (current.children[index] == null) {
+                current.children[index] = new TrieNode();
+            }
+            // Move to the next node
+            current = current.children[index];
+        }
+        // Mark the end of the word
+        current.isEndOfWord = true;
+    }
+    
+    // 2. Search for a word in the Trie
+    public boolean search(String word) {
+        TrieNode current = root;
+        
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            int index = ch - 'a';
+           
+            if (current.children[index] == null) {
+                return false;
+            }
+            current = current.children[index];
+        }
+        return current.isEndOfWord;
+    }
+    
+    // 3. Check if a prefix exists in the Trie
+    public boolean isPrefix(String word) {
+        TrieNode current = root;
+        
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            int index = ch - 'a';
+            
+            // If the path breaks, the prefix doesn't exist
+            if (current.children[index] == null) {
+                return false;
+            }
+            current = current.children[index];
+        }
+        return true;
+    }
+}
