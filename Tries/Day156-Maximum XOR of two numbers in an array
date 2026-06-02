@@ -1,0 +1,72 @@
+// User function Template for Java
+
+class Solution {
+    static final int BITS = 20;
+    
+    int[][] trie;
+    int trieIdx;
+    
+    void insert(int num) {
+        int node = 0;
+        for (int i = BITS - 1; i >= 0; i--) {
+            int bit = (num >> i) & 1;
+            if (trie[node][bit] == -1) {
+                trie[node][bit] = ++trieIdx;
+            }
+            node = trie[node][bit];
+        }
+    }
+    
+    int queryMaxXor(int num) {
+        int node = 0, xorVal = 0;
+        for (int i = BITS - 1; i >= 0; i--) {
+            int bit = (num >> i) & 1;
+            int want = 1 - bit;  
+            if (trie[node][want] != -1) {
+                xorVal |= (1 << i);     
+                node = trie[node][want];
+            } else {
+                node = trie[node][bit]; 
+            }
+        }
+        return xorVal;
+    }
+    
+    public int maxXor(int[] arr) {
+        int maxNodes = arr.length * BITS + 1;
+        trie = new int[maxNodes][2];
+        trieIdx = 0;
+        
+        for (int[] node : trie) { node[0] = -1; node[1] = -1; }
+        
+        for (int num : arr) insert(num);
+        
+        int maxVal = 0;
+        for (int num : arr) {
+            maxVal = Math.max(maxVal, queryMaxXor(num));
+        }
+        return maxVal;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
