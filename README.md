@@ -24,6 +24,16 @@
 
 ---
 
+## 🌐 Connect With Me
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/ranitghosh26/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-Connect%20with%20Me-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+
+</div>
+
 ### 🌟 "Code • Debug • Repeat • Conquer"
 
 </div>
@@ -40,41 +50,87 @@ The goal is to improve:
 - 🧠 Data Structures & Algorithms
 - 🎯 Interview Preparation
 
----
-
 # 🎯 Topics Covered
 
 <div align="center">
 
 | 📚 Topic | 🚀 Progress |
-|----------|-------------|
+|----------|------------|
 | Arrays | ✅ Completed |
 | Strings | ✅ Completed |
 | Linked List | ✅ Completed |
 | Stack | ✅ Completed |
 | Queue | ✅ Completed |
 | Trees | ✅ Completed |
-| Graphs | 🔄 In Progress |
-| Dynamic Programming | 🔄 In Progress |
-| Greedy | ⏳ Pending |
+| Graphs | ✅ Completed |
+| Dynamic Programming | ✅ Completed |
+| Greedy | ✅ Completed |
+| Heap | ✅ Completed |
+| Hashing | ✅ Completed |
+| Sorting | ✅ Completed |
+| Searching | ✅ Completed |
+| Matrix | ✅ Completed |
+| Recursion | ✅ Completed |
+| Backtracking | ✅ Completed |
+| Bit Manipulation | ✅ Completed |
+| Trie | ✅ Completed |
+| Binary Search | ✅ Completed |
+| Sliding Window | ✅ Completed |
+| Two Pointers | ✅ Completed |
+| Prefix Sum | ✅ Completed |
+| Deque | ✅ Completed |
+| Segment Tree | ✅ Completed |
+| Disjoint Set Union (DSU) | ✅ Completed |
+| Mathematics | ✅ Completed |
+| Number Theory | ✅ Completed |
+| Miscellaneous | ✅ Completed |
 
 </div>
 
 ---
 
+# 🏆 GfG 160 Challenge Status
+
+<div align="center">
+
+## ✅ 160 / 160 Problems Solved
+
+🎉 **All Topics Completed Successfully**
+
+</div>
+
 # ⚡ Folder Structure
 
 ```bash
-📦 GFG-160-Days-Java
- ┣ 📂 Arrays
- ┣ 📂 Matrix
- ┣ 📂 Sorting
- ┣ 📂 Searching
- ┣ 📂 Strings
- ┣ 📂 Linked List
- ┣ 📂 Stack
- ┣ 📂 Queue
- ┣ 📂 Trees
- ┣ 📂 Graph
- ┣ 📂 Dynamic Programming
- ┗ 📜 README.md
+📦 GFG-160-Days-of-Problem-Solving
+┣ 📂 01-Arrays
+┣ 📂 02-Strings
+┣ 📂 03-Sorting
+┣ 📂 04-Searching
+┣ 📂 05-Matrix
+┣ 📂 06-Hashing
+┣ 📂 07-Two-Pointer-Technique
+┣ 📂 08-Prefix-Sum
+┣ 📂 09-Sliding-Window
+┣ 📂 10-Linked-List
+┣ 📂 11-Stack
+┣ 📂 12-Queue
+┣ 📂 13-Deque
+┣ 📂 14-Tree
+┣ 📂 15-Binary-Search-Tree
+┣ 📂 16-Heap
+┣ 📂 17-Trie
+┣ 📂 18-Graph
+┣ 📂 19-Greedy
+┣ 📂 20-Backtracking
+┣ 📂 21-Recursion
+┣ 📂 22-Dynamic-Programming
+┣ 📂 23-Bit-Manipulation
+┣ 📂 24-Mathematical
+┣ 📂 25-Number-Theory
+┣ 📂 26-Disjoint-Set-Union
+┣ 📂 27-Segment-Tree
+┣ 📂 28-Miscellaneous
+┣ 📜 README.md
+┗ 📜 LICENSE
+```
